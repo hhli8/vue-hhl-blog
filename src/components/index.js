@@ -4,10 +4,12 @@
 
 import Pull from './pull';
 import Lazyload from './lazyload';
+import Header from './header';
 
 const hview = {
 	hPull: Pull,
-	hLazyload: Lazyload
+	hLazyload: Lazyload,
+	hHeader: Header
 };
 
 const install = Vue => {

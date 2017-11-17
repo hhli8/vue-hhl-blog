@@ -22,6 +22,7 @@
                 </li>
             </ul>
         </div>
+        
         <router-view name="compLists" class="section"></router-view>
     </div>
 </template>

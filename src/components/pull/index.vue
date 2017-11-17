@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="pull-load-more">
+        <!--<div class="pull-load-more">
             <div v-show="!isLoading" class="loading-text">{{loadingText}}</div>
             <div v-show="isLoading" class="isRefreshing">
                 <div class="object object_one"></div>
@@ -46,7 +46,7 @@
                 <div class="object object_seven"></div>
                 <div class="object object_eight"></div>
             </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -269,6 +269,7 @@
     .pull-load{
         background: #f7f7f7;  
         height: 100%;
+        position: relative;
         .pull-load-refresh,.pull-load-more{ 
             height: 40px;
             position: absolute;   

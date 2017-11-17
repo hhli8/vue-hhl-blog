@@ -1,10 +1,15 @@
 <template>
-	<div class="">
+	<div class="app">
+	    <h-header></h-header>
+	    <!--<div class="content">-->
+	        
+	    
 		<h-pull class="" :topMethod="refresh" :bottomMethod="loadmore" ref="pull" :topDistance=40 :bottomDistance=40 :bottomAllLoaded="bottomAllLoaded">
 			<ul slot="content" id="lists">
 				<li v-for="item in lists">{{item}}</li>
 			</ul>
 		</h-pull>
+		<!--</div>-->
 	</div>
 </template>
 
@@ -32,7 +37,7 @@
 			        console.log('loadmore');
     				var x=8888;
                     for(var i=0;i<x;i++){
-                        console.log(i);
+                        //console.log(i);
                     }
                     var add=['adas','啊实打实大师的','啊实打实大师的','趣味全顺达','啊实打实大师','啊实打实大师的'];
                     this.lists.push(...add);
@@ -60,5 +65,8 @@
         li:last-child{
             /*margin-bottom: 0;*/
         }
+    }
+    .app{
+        padding-top: 1rem;
     }
 </style>
