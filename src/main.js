@@ -15,9 +15,9 @@ Object.defineProperty(Vue.prototype, '$http', {
 })
 
 // 移动端ui
-//import MintUI from 'mint-ui';
-//import 'mint-ui/lib/style.css';
-//Vue.use(MintUI);
+import MintUI from 'mint-ui';
+import 'mint-ui/lib/style.css';
+Vue.use(MintUI);
 
 // 自定义组件
 import hView from '@/components';
