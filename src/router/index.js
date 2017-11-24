@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Components from './components'
+import Components from './components' 
+import Personal from './personal'
 
 Router.prototype.goBack = function() {
     this.isBack = true
@@ -9,26 +10,25 @@ Router.prototype.goBack = function() {
 Vue.use(Router)
 
 export default new Router({
-    //mode: 'history',
+    mode: 'history',
     scrollBehavior (to, from, savedPosition) {
-        // return 期望滚动到哪个的位置
-        //if(savedPosition) console.log(savedPosition);
-//      if (to.hash) {
-//        return {
-//          selector: to.hash
-//        }
-//      }
+      if(savedPosition) return savedPosition;
+      return {
+        x: 0,
+        y: 0
+      };
     },
     //abstract: true,  // 无效
     routes: [{
             path: '/',
             name: 'index',
             component: resolve => {
-                require(['@/view'], resolve);
+                require(['@/view/main'], resolve);
             },
             //非定位的跳转，返回页面位置不刷新
             children: [
                 Components,
+                Personal,
                 {
                     path: '/section1',
                     name: 'section1',

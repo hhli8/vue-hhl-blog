@@ -1,16 +1,12 @@
 <template>
-  <router-view class="section"/>
+    <!--<router-view class="section"/>-->
+    <div></div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data(){
-    return {
-      
+    export default {
+        name: 'app'
     }
-  }
-}
 </script>
 
 <style>

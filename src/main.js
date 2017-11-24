@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from '@/router'
 import store from '@/store'
+import VueResource from 'vue-resource';
+
 
 // axios配置
 import Axios from 'axios'
@@ -11,8 +13,13 @@ import {configAxios} from '@/lib/config-axios'
 // axios-自定义配置
 configAxios.init(Axios)
 Object.defineProperty(Vue.prototype, '$http', {
-  value: Axios
+    value: Axios
 })
+
+// Resource
+//Vue.use(VueResource);
+////Vue.http.options.root = config.basehttpUrl;
+//Vue.http.options.emulateJSON = true;
 
 // 移动端ui
 import MintUI from 'mint-ui';

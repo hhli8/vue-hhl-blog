@@ -5,11 +5,13 @@
 import Pull from './pull';
 import Lazyload from './lazyload';
 import Header from './header';
+import Footer from './footer';
 
 const hview = {
 	hPull: Pull,
 	hLazyload: Lazyload,
-	hHeader: Header
+	hHeader: Header,
+	hFooter: Footer
 };
 
 const install = Vue => {

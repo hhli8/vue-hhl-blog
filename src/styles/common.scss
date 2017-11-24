@@ -401,6 +401,11 @@ $required: #fa5a5a;
     height: 100%;
     top:0;
     left:0;
+    background: #fff;
+}
+.scroll-box.bot{
+    bottom:1.01rem;
+    height: auto; 
 }
 .slide-left-enter, .slide-right-leave-active {
     opacity: 0;
@@ -412,3 +417,31 @@ $required: #fa5a5a;
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100%, 0);
 }
+
+// 动画效果-页面切换
+.page-right-in{
+    
+}
+.page-left-out{
+    
+}
+.fade{
+    
+}
+.fadein-enter-active, .fadein-leave-active,.fadeout-enter-active, .fadeout-leave-active  {
+  transition: all .5s
+}
+//.fade-enter, .fade-leave-to {
+//left:-100%;
+//}
+.fadein-leave-to{
+    left:-100%;
+}
+.fadein-enter{left:100%;}
+//.fadein-enter-to{left:0;}
+
+.fadeout-leave-to{
+    left:100%;
+}
+.fadeout-enter{left:-100%;}
+//.fadeout-enter-to{left:0;}

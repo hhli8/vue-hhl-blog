@@ -11,5 +11,12 @@ export default {
     } else {
         return cryptoMd5('sinafenqi').toString();
     }
-  }
+  },
+  
+    glodata: {
+        //页面切入切出
+        pageTran: 'fadein'
+    }
 }
+
+
