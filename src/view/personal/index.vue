@@ -25,7 +25,7 @@
           var params={name:'hhl',psd:'123456'};
           let out=Axios.get('/login',{params:params});
           out.then((res) => {
-            console.log(res);
+            //console.log(res);
             console.log(res.data);
           })
           

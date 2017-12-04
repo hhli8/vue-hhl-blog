@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Components from './components' 
 import Personal from './personal'
+import Technology from './technology'
 
 Router.prototype.goBack = function() {
     this.isBack = true
@@ -29,6 +30,7 @@ export default new Router({
             children: [
                 Components,
                 Personal,
+                Technology,
                 {
                     path: '/section1',
                     name: 'section1',

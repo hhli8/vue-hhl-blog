@@ -1,13 +1,14 @@
 <template>
-    <router-view class="section"/>
+    <div>
+        999999999999
+    </div>
 </template>
 
 <script>
     export default {
-        name: 'app'
+        
     }
 </script>
 
 <style>
-  
 </style>

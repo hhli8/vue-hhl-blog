@@ -18,16 +18,28 @@ export default {
   		},
   		{
   		    path: '/components/lazyload',
-              components: {
-                  compLists:resolve => {require(['@/view/components-demo/lazyload/index.vue'], resolve);}
-              }
+                components: {
+                    compLists:resolve => {require(['@/view/components-demo/lazyload/index.vue'], resolve);}
+                }
   		},
   		{
   		    path: '/components/filter',
-              components: {
-                  compLists:resolve => {require(['@/view/components-demo/filter'], resolve);}
-              }
-  		}
+                components: {
+                    compLists:resolve => {require(['@/view/components-demo/filter'], resolve);}
+                }
+  		},
+  		{
+            path: '/components/waterfall',
+                components: {
+                    compLists:resolve => {require(['@/view/components-demo/waterfall'], resolve);}
+                }
+        },
+  		{
+            path: '/components/vueEvents',
+                components: {
+                    compLists:resolve => {require(['@/view/components-demo/vueEvents/index.vue'], resolve);}
+                }
+        }
   	]
 }
 

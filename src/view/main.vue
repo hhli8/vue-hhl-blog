@@ -7,7 +7,7 @@
         </mt-swipe>
       </div>
       <ul class="nav-fixed flexBox flexBetween" ref="scroll" :class="navParam.fixed">
-        <li v-for="(item,index) in navFixed" :key="index"><router-link to="#">{{item.text}}</router-link></li>
+        <li v-for="(item,index) in navFixed" :key="index"><router-link :to="item.to">{{item.text}}</router-link></li>
       </ul>
       <ul class="nav-fixed" v-show="navParam.navLike" ref="scrollLike"></ul>
       <h-footer></h-footer>
@@ -38,6 +38,7 @@
     <router-view name="section1" class="section"/>
     <router-view name="section2" class="section"/>
     <router-view name="comp" class="section"/>
+    <transition></transition>
     <router-view name="personal" class="section"/>
   </div>
   <!--
@@ -64,10 +65,10 @@
         ],
         // nav 内容
         navFixed:[
-          {text:'阿达大师'},
-          {text:'阿达大师'},
-          {text:'阿达大师'},
-          {text:'阿达大师'}
+          {text:'技术站',to:'/technology'},
+          {text:'生活路',to:''},
+          {text:'小厨房',to:''},
+          {text:'锻炼吧',to:''}
           // 健身 美食  旅游  技术 杂谈 
         ],
         // nav 置顶参数

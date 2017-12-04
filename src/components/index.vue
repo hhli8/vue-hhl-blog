@@ -12,6 +12,12 @@
                     <router-link to="components/filter">过滤器-使用</router-link>
                 </li>
                 <li>
+                    <router-link to="components/waterfall">瀑布流</router-link>
+                </li>
+                <li>
+                    <router-link to="components/vueEvents">vue的事件机制</router-link>
+                </li>
+                <li>
                     分页
                 </li>
                 <li>

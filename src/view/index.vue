@@ -1,6 +1,6 @@
 <template>
-    <!--<main-content></main-content>-->
-    <router-view class="section"/>
+    <main-content></main-content>
+    <!--<router-view class="section"/>-->
 </template>
 
 <script>
