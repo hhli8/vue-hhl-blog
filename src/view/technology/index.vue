@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="scroll-box">
-            <h-header></h-header>
+            <h-header :title="title" :isRight="header.isRight"></h-header>
             <ul class="type-box flexBox">
                 <li v-for="item in lists">
                     <router-link :to="item.to">
@@ -22,46 +22,14 @@
             return {
                 lists: [
                     {name: 'Vue', to: 'technology/article', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Vue', to: '', bg: 'static/imgs/temp/22.png'},
-                    {name: 'Node.js', to: '', bg: 'static/imgs/temp/22.png'},
+                    {name: 'Node.js', to: '', bg: 'static/imgs/technology/node.jpg'},
                     {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
                     {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'}
-                ]
+                ],
+                title:'技术站',
+                header:{
+                  isRight:true
+                }
             }
         }
     }
