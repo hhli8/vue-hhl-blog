@@ -40,6 +40,21 @@
     <router-view name="comp" class="section"/>
     <transition></transition>
     <router-view name="personal" class="section"/>
+    <!--<div id="modal">
+      <div class="modal-bg"></div>
+      <div class="modal-wait">
+        <div class="isRefreshing">
+            <div class="object object_one"></div>
+            <div class="object object_two"></div>
+            <div class="object object_three"></div>
+            <div class="object object_four"></div>
+            <div class="object object_five"></div>
+            <div class="object object_six"></div>
+            <div class="object object_seven"></div>
+            <div class="object object_eight"></div>
+        </div>
+      </div>
+    </div>-->
   </div>
   <!--
     官方日记+推荐用户日记，以列表为主，插入编辑广告
@@ -148,5 +163,123 @@
     width:100%;
   }
   
+  /*.isRefreshing{
+      display: inline-block;
+      width:30px;
+      height: 30px;
+      margin-top: 5px;
+      position: relative;
+      .object{
+          width: 4px;
+          height: 4px;
+          background-color: #fff;
+          position: absolute;
+          -moz-border-radius: 50% 50% 50% 50%;
+          -webkit-border-radius: 50% 50% 50% 50%;
+          border-radius: 50% 50% 50% 50%;
+          -webkit-animation: animate 0.8s infinite;
+          animation: animate 0.8s infinite;
+      }
+      .object_one {
+          top:4px;
+          left:4px;
+      }
+      
+      .object_two {
+          top:0;
+          left:13px;
+          -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+      }
+      
+      .object_three {
+          top:4px;
+          right:4px;
+          -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+      }
+      
+      .object_four {
+          left:26px;
+          top:13px;
+          -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+      }
+      
+      .object_five {
+          right:4px;
+          bottom:4px;
+          -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+      }
+      
+      .object_six {
+          top:26px;
+          left:13px;
+          -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+      }
+      
+      .object_seven {
+          bottom:4px;
+          left:4px;
+          -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+      }
+      
+      .object_eight {
+          left: 0px;
+          top:13px;
+          -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+      }
+  }
+  @-webkit-keyframes animate {
+      25% {
+          -ms-transform: scale(1.5);
+          -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+      }
+      75% {
+          -ms-transform: scale(0);
+          -webkit-transform: scale(0);
+          transform: scale(0);
+      }
+  }
   
+  @keyframes animate {
+      50% {
+          -ms-transform: scale(1.5, 1.5);
+          -webkit-transform: scale(1.5, 1.5);
+          transform: scale(1.5, 1.5);
+      }
+      100% {
+          -ms-transform: scale(0, 0);
+          -webkit-transform: scale(0, 0);
+          transform: scale(0, 0);
+      }
+  }
+  
+  #modal{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 5000;
+    width:100%;
+    height: 100%;
+    display: none;
+    .modal-bg{
+      background: rgba(0,0,0,.3);
+      height: 100%;
+      width: 100%;
+    }
+    .modal-wait{
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+    }
+  }*/
+ 
+    
 </style>

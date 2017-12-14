@@ -48,6 +48,13 @@ import './styles';
 
 Vue.config.productionTip = false
 
+Vue.prototype.openWaiting = function (){
+  
+}
+Vue.prototype.closeWaiting = function (){
+  
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
