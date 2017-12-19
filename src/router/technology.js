@@ -5,8 +5,8 @@ export default {
     },
     children: [
         {
-            path: 'article',
-            component: resolve => {require(['@/view/technology/article1.vue'], resolve);}
+            path: 'detail',
+            component: resolve => {require(['@/view/technology/detail.vue'], resolve);}
         }
     ]
 }

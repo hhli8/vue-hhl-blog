@@ -31,13 +31,13 @@ import hView from '@/components';
 Vue.use(hView);
 
 //自定义-懒加载----https://github.com/hilongjw/vue-lazyload#demo
-import lazyload from 'vue-lazyload';
-Vue.use(lazyload,{
-    error: 'static/imgs/pull/t0142816b8a27f1efef.jpg',//这个是请求失败后显示的图片
-    loading: 'static/imgs/pull/t0142816b8a27f1efef.jpg',//这个是加载的loading过渡效果
-    try: 2, // 这个是加载图片数量
-    lazyComponent: true
-});
+//import lazyload from 'vue-lazyload';
+//Vue.use(lazyload,{
+//  error: 'static/imgs/pull/t0142816b8a27f1efef.jpg',//这个是请求失败后显示的图片
+//  loading: 'static/imgs/pull/t0142816b8a27f1efef.jpg',//这个是加载的loading过渡效果
+//  try: 2, // 这个是加载图片数量
+//  lazyComponent: true
+//});
 
 //过滤器
 import filter from '@/lib/filter.js'
