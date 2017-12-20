@@ -5,48 +5,44 @@
             <ul id="typeBox" class="flexBox closeType" :class="openChoseType?'active':''">
               <li v-for="item in typelists"><a @click="closeType(item.id)" class="closeType">{{item.name}}</a></li>
             </ul>
-            <ul class="list-box">
+            <h-pull class="" :topMethod="refresh" :bottomMethod="loadmore" ref="pull" :topDistance=40 :bottomDistance=40 :bottomAllLoaded="pull.bottomAllLoaded" :isInfiniteOver="pull.isInfiniteOver" v-show="hasData">                    
+              <!--<ul slot="content" id="lists">
+                <li v-for="item in lists">{{item}}</li>
+              </ul>-->
+              <ul class="list-box" slot="content" ref="listBox">
+                <li v-for="(item,index) in lists" :data-type="item.kind" :class="'type'+item.kind" @click="toDetail(item)">
+                  <router-link to="technology/detail">
+                    <img  alt="" v-lazy="item.simg.site"/>
+                    <div class="description">{{item.stext}}</div>
+                  </router-link>
+                </li>
+              </ul>
+            </h-pull>
+            
+            
+            <!--<ul class="list-box">
               <li v-for="(item,index) in lists" :data-type="item.kind" :class="'type'+item.kind" @click="toDetail(item)">
                 <router-link to="technology/detail">
                   <img  alt="" v-lazy="item.simg.site"/>
-                  <!--:src="item.simg.site"-->
                   <div class="description">{{item.stext}}</div>
                 </router-link>
               </li>
-            </ul>
-            <!--<ul class="type-box flexBox">
-                <li v-for="item in lists">
-                    <router-link :to="item.to">
-                        <img :src="item.bg" alt="loading" />
-                        <span>{{item.name}}</span>
-                    </router-link>
-                </li>
-            </ul>   -->
-            <!--<iframe src="http://mp.weixin.qq.com/s/BqKhLHrcO39RokDloO09EA">
-                <img src="http://mmbiz.qpic.cn/mmbiz_jpg/QTNzZR6KeDicrKmBw5nnTngpkCT2QnQcLZbwhCElPicAPoSwgVicG7K24ydO9c2gypBkRuW21zZiaKl800EIlb1sxw/0?wx_fmt=jpeg" alt="" />
-            </iframe>-->
+            </ul>-->
         </div>
         <router-view class="section article-detail"></router-view>
     </div>
 </template>
 
+
 <script>
-    //import io from 'socket.io';
     import Axios from 'axios';
     import { Indicator } from 'mint-ui';
     export default {
         name: 'technology',
         data() {
             return {
-                lists:[
-                  
-                ],
-//              lists: [
-//                  {name: 'Vue', to: 'technology/article', bg: 'static/imgs/temp/22.png'},
-//                  {name: 'Node.js', to: '', bg: 'static/imgs/technology/node.jpg'},
-//                  {name: 'React', to: '', bg: 'static/imgs/temp/22.png'},
-//                  {name: 'ES6', to: '', bg: 'static/imgs/temp/22.png'}
-//              ],
+                lists:[],
+                hasData:true,
                 title:'技术站',
                 header:{
                   isRight:true,
@@ -61,39 +57,60 @@
                   {name:'Vue'},
                   {name:'Vue'}
                 ],
-                openChoseType:false
+                openChoseType:false,
+                pull:{
+                  bottomAllLoaded: false,
+                  n:1, //开始页
+                  totalPage:1, //总页数,
+                  level2:'',
+                  isInfiniteOver:false
+                }
             }
         },
         methods:{
-          openType(isopen){  //传给子的函数//console.log('父的函数'+isopen);
-            //this.header.openTypes=!isopen;
+          openType(isopen){  
             this.header.openTypes=!this.header.openTypes;
-            this.openChoseType=!this.openChoseType;
+            this.openChoseType=!this.openChoseType;  
           },
-          closeType(id){ //关闭选择类别//针对选择的操作-ajax
+          closeType(id){ 
             this.openType();
-            console.log(id+'选择分类的文章');//此type非那个type
-            this.load('',1,'101',id); //a=101 b=id
+            //this.hasData=true;
+            this.pull.n=1;
+            this.pull.isInfiniteOver = true;
+            //this.pull.bottomAllLoaded =false;
+            //需要置顶 
+            //this.lists=[];
+            //this.$refs.listBox.scrollT=0;
+            this.load('',1,'101',id,(out)=>{ 
+              if(this.pull.n==this.pull.totalPage){
+                this.pull.isInfiniteOver = true;
+                //this.pull.bottomAllLoaded =true;
+              }else{ 
+                this.pull.isInfiniteOver = false;
+              }
+            }); //('',page,a,b) a:一级分类 b:二级分类
+            this.pull.level2=id;
           },
           closeTypeAll(e){
             if(e.target.className.indexOf('closeType')==-1 && this.header.openTypes){
               this.openType();
             }
           },
-          load(type,page,a,b){
+          load(type,page,a,b,fun){
             Indicator.open({
               text: 'Loading...',
               spinnerType: 'triple-bounce'
             });
-            //ajax
             var params={
-              type:type,page:page,level1:a,level2:b
+              type:type,page:page,level1:a,level2:b,count:3
             };
             Axios.get('/article/find',{params:params})
               .then((res)=>{
                 let out=res.data; console.log(out);
                 if(out.suc){
-                  this.lists=out.res;
+                  if(params.page==1){this.lists=out.res;}
+                  this.pull.totalPage=out.totalPage;
+                  fun(out);
                 }
                 Indicator.close();
               });
@@ -103,15 +120,44 @@
           },
           toDetail(data){
             localStorage.ArticlesUrl=data.swebsite;
+          },
+          refresh(){
+            this.load('',1,'101',this.pull.level2,()=>{}); 
+            this.$refs.pull.onTopLoaded();
+          },
+          loadmore(){ 
+            if(this.pull.n<this.pull.totalPage){
+              console.log('loadmore');//会产生两次-解决办法？
+              this.pull.n++;
+              this.load('',this.pull.n,'101',this.pull.level2,(out)=>{
+                let add=out.res;
+                this.lists=this.lists.concat(add);
+                console.log(this.lists);
+                if(this.pull.n==this.pull.totalPage) {
+                  this.pull.isInfiniteOver = true;
+                  this.pull.bottomAllLoaded =true;
+                }
+                this.$refs.pull.onBottomLoaded(); 
+              });
+            }
           }
         },
         computed:{
           
         },
-        created(){  
-          this.load('',1,'101',''); 
-//        let io=require('socket.io');
-//        var socket=io.connect("ws://127.0.0.1:3000");
+        created(){  //数据，有数据加载完时isInfiniteOver=true,无数据时hasData=true
+          this.load('',1,'101','',(out)=>{ 
+            
+//          if(this.pull.n==this.pull.totalPage){ console.log(23456);
+//            this.pull.isInfiniteOver =false;
+//            this.pull.bottomAllLoaded =true;
+//          }
+          });
+          
+          //this.$socket.emit('connect',223);
+        },
+        sockets:{
+          connect(val){}
         }
     }
 </script>
@@ -150,14 +196,16 @@
             position: relative;
             margin-top: .12rem;
             a{
-              display: inline-block;
+              display: block;
+              text-align: center;
             }
             img{
               vertical-align: bottom;
+              height: 5rem;
             }
             .description{
+              text-align: left;
               position: absolute;
-              /*line-height: .6rem;*/
               background: rgba(0,0,0,.5);
               color:#fff;
               bottom: 0;
@@ -171,38 +219,18 @@
             }
           }
         }
-        .type-box{
-            flex-wrap: wrap;
-            li{
-                width:25%;
-                margin-top: .2rem;
-                text-align: center;
-                a{
-                    width:1.5rem;
-                    height: 1.5rem;
-                    display: inline-block;
-                    position: relative;
-                    margin-bottom: .4rem;
-                    img{
-                        width:100%;
-                        height: 100%;
-                        border-radius: 50%;
-                    }
-                    span{
-                        width:100%;
-                        position: absolute;
-                        display: inline-block;
-                        font-size:.32rem;
-                        color:#333;
-                        bottom:-.5rem;
-                        left:0;
-                    }
-                }
-            }
-        }
-        /**/
     }
     .article-detail{
         z-index:1100;
     }
 </style>
+
+
+<!--
+  问题：
+  切换时未置顶
+  切换时下面的刷新状态管理问题
+  上拉加载会产生2次问题
+  上拉加载刷新状态问题
+  
+-->

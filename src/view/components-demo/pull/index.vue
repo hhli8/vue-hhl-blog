@@ -32,7 +32,7 @@
 				}
 				this.$refs.pull.onTopLoaded();
 			},
-			loadmore(){
+			loadmore(){ console.log(8);
 			    if(this.n<this.totalPage){
 			        console.log('loadmore');
     				var x=8888;
@@ -46,7 +46,7 @@
                         //子通过prop来的父组件的数据没有实时刷新
                     //console.log('212'+this.bottomAllLoaded);
                     this.$refs.pull.onBottomLoaded();
-			    }  
+			    } 
 			}
 		}
 	}

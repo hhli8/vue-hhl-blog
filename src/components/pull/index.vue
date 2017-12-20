@@ -19,8 +19,8 @@
         <div @scroll="infiniteScroll" class="pull-load-content scroll-box" :style="{ 'transform': 'translate3d(0, ' + translate + 'px, 0)', 'transition':'all linear .'+time+'s'}" ref="content">
             <div ref="scroll">
                 <slot name="content"></slot>
-                <div v-show="isInfiniteOver" class="infiniteScrolling">没有更多数据了...</div> 
-                <div class="isRefreshing-box" v-show="!isInfiniteOver">                   
+                <div v-show="isInfiniteOver_" class="infiniteScrolling">没有更多数据了...</div> 
+                <div class="isRefreshing-box" v-show="!isInfiniteOver_">                   
                     <div  class="isRefreshing">
                         <div class="object object_one"></div>
                         <div class="object object_two"></div>
@@ -68,8 +68,8 @@
                 isRefreshing: false,            //刷新箭头转化为等待状态
                 deg: 0,                         //箭头旋转角度
                 isLoading: false,               //加载转化为等待状态
-                loadingText: '获取更多数据',     //加载显示文字内容
-                isInfiniteOver: false        //是否在无限加载中
+                loadingText: '获取更多数据',        //加载显示文字内容
+                isInfiniteOver_: this.isInfiniteOver         //是否在无限加载中
             }
         },
         props: {
@@ -94,6 +94,10 @@
             bottomDistance: { //上拉多长时触发
                 type: Number,
                 default: 30
+            },
+            isInfiniteOver: { //是否在无限加载中
+                type: Boolean,
+                default: false
             }
         },
         watch:{
@@ -253,8 +257,8 @@
             infiniteScroll(){  
                 if(this.checkBottomReached() && !this.bottomAllLoaded){
                     this.bottomMethod();
-                }else if(this.bottomAllLoaded){
-                    this.isInfiniteOver = true;
+                }else if(this.bottomAllLoaded){ 
+                    this.isInfiniteOver_ = true;
                 }
             }
 

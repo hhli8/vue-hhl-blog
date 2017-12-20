@@ -30,6 +30,9 @@ Vue.use(MintUI);
 import hView from '@/components';
 Vue.use(hView);
 
+// socket.io
+import VueSocketio from 'vue-socket.io';
+Vue.use(VueSocketio, 'ws://127.0.0.1:3000');
 //自定义-懒加载----https://github.com/hilongjw/vue-lazyload#demo
 //import lazyload from 'vue-lazyload';
 //Vue.use(lazyload,{
