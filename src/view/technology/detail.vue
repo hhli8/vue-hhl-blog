@@ -17,7 +17,6 @@
       }
     },
     created(){
-      //console.log(localStorage);
       this.iframe.src=localStorage.ArticlesUrl;
     }
   }
