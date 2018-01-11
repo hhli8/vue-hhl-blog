@@ -18,16 +18,6 @@
                 </li>
               </ul>
             </h-pull>
-            
-            
-            <!--<ul class="list-box">
-              <li v-for="(item,index) in lists" :data-type="item.kind" :class="'type'+item.kind" @click="toDetail(item)">
-                <router-link to="technology/detail">
-                  <img  alt="" v-lazy="item.simg.site"/>
-                  <div class="description">{{item.stext}}</div>
-                </router-link>
-              </li>
-            </ul>-->
         </div>
         <router-view class="section article-detail"></router-view>
     </div>
@@ -96,7 +86,7 @@
               this.openType();
             }
           },
-          load(type,page,a,b,fun){
+          load(type,page,a,b,fun){ 
             Indicator.open({
               text: 'Loading...',
               spinnerType: 'triple-bounce'
